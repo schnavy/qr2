@@ -87,12 +87,12 @@
         window.addEventListener('load', () => {
             let img = document.querySelector('img');
 
-            let randomNum = Math.floor(Math.random() * 1768);
+            let randomNum = Math.floor(Math.random() * 7506);
             img.src = `persons/person_${randomNum}.jpg`;
             img.style.display = 'block';
 
             img.addEventListener('click', () => {
-                let randomNum = Math.floor(Math.random() * 1768);
+                let randomNum = Math.floor(Math.random() * 7506);
                 img.src = `persons/person_${randomNum}.jpg`;
             });
 
