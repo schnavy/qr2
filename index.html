@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>This person does exist</title>
+        
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="This person does exist. Maybe it is not a person. Scraped from the OpenImages Dataset.">
+        <meta name="keywords" content="person, AI, generated, OpenImages, computer vision, art">
+        <meta name="author" content="David Wahrenburg">
+        
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="This person does exist">
+        <meta property="og:description" content="This person does exist. Maybe it is not a person. Scraped from the OpenImages Dataset.">
+        <meta property="og:image" content="assets/thumb.jpg">
+        <meta property="og:url" content="">
+        <meta property="og:site_name" content="This person does exist">
+        
+        <!-- Twitter Card Meta Tags -->
+        <meta name="twitter:persond" content="summary_large_image">
+        <meta name="twitter:title" content="This person does exist">
+        <meta name="twitter:description" content="This person does exist. Maybe it is not a person.">
+        <meta name="twitter:image" content="assets/thumb.jpg">
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/jpeg" href="assets/favico.jpg">
+    </head>
+
+    <style>
+        body {
+            
+            background: #343434;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        img {
+            height: 100vh;
+            width: 100vw;
+            cursor: pointer;
+            display: none;
+        }
+
+        .desc {
+            position: fixed;
+            background: white;
+            bottom: 0;
+            left: 0;
+            max-width: 30rem;
+
+            .toggle {
+                cursor: pointer;
+                padding: .5rem;
+            }
+
+            .credits {
+                padding: .5rem;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <body>
+        <img src="persons/person_0.jpg" alt="An image of a person that does exist"/>
+        <div class="desc">
+            <div class="toggle">?</div>
+            <div class="credits hidden">
+            This person does exist. Maybe it is not a person.<br/>
+            These persons are scraped from the <a href="https://storage.googleapis.com/openimages/web/index.html">OpenImages</a> Dataset, detected using <a
+                    href="https://opencv.org/">OpenCV</a> object detection as part of the
+            project "[Harvesting] the Crops of Your Labor" by <a href="https://davidwahrenburg.de">David Wahrenburg</a>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        window.addEventListener('load', () => {
+            let img = document.querySelector('img');
+
+            let randomNum = Math.floor(Math.random() * 1768);
+            img.src = `persons/person_${randomNum}.jpg`;
+            img.style.display = 'block';
+
+            img.addEventListener('click', () => {
+                let randomNum = Math.floor(Math.random() * 1768);
+                img.src = `persons/person_${randomNum}.jpg`;
+            });
+
+            let toggle = document.querySelector('.toggle');
+            let credits = document.querySelector('.credits');
+
+            toggle.addEventListener('click', () => {
+                console.log('clicked');
+                console.log(credits.style.display);
+                if (credits.classList.contains('hidden')) {
+                    credits.classList.remove('hidden');
+                    toggle.innerText = 'Close';
+                } else {
+                    credits.classList.add('hidden');
+                    toggle.innerText = '?';
+                }
+            });
+        });
+    </script>
+</html>
