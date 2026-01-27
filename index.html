@@ -1,115 +1,163 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>This person does exist</title>
-        
-        <!-- SEO Meta Tags -->
-        <meta name="description" content="This person does exist. Maybe it is not a person. Scraped from the OpenImages Dataset.">
-        <meta name="keywords" content="person, AI, generated, OpenImages, computer vision, art">
-        <meta name="author" content="David Wahrenburg">
-        
-        <!-- Open Graph Meta Tags -->
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="This person does exist">
-        <meta property="og:description" content="This person does exist. Maybe it is not a person. Scraped from the OpenImages Dataset.">
-        <meta property="og:image" content="assets/thumb.jpg">
-        <meta property="og:url" content="">
-        <meta property="og:site_name" content="This person does exist">
-        
-        <!-- Twitter Card Meta Tags -->
-        <meta name="twitter:persond" content="summary_large_image">
-        <meta name="twitter:title" content="This person does exist">
-        <meta name="twitter:description" content="This person does exist. Maybe it is not a person.">
-        <meta name="twitter:image" content="assets/thumb.jpg">
-        
-        <!-- Favicon -->
-        <link rel="icon" type="image/jpeg" href="assets/favico.jpg">
-    </head>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Construction</title>
+    <meta name="description" content="This site is currently under construction.">
+    <link rel="icon" type="image/jpeg" href="assets/favico.jpg">
     <style>
-        body {
-            
-            background: #343434;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { min-height: 100vh; font-family: Arial, Helvetica, sans-serif; }
+        .page { display: none; min-height: 100vh; width: 100%; padding: 20px; }
+        .page.active { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        h1 { text-align: center; }
+        .icon { margin-bottom: 15px; }
 
-        img {
-            height: 100vh;
-            width: 100vw;
-            cursor: pointer;
-            display: none;
-        }
+        /* 1: Blue Gradient */
+        .page-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; }
+        .page-1 .icon { font-size: 40px; }
+        .page-1 h1 { font-size: 28px; font-weight: 300; }
 
-        .desc {
-            position: fixed;
-            background: white;
-            bottom: 0;
-            left: 0;
-            max-width: 30rem;
+        /* 2: Dark with Orange Accent */
+        .page-2 { background: #1a1a1a; color: #fff; }
+        .page-2 h1 { font-size: 24px; text-transform: uppercase; letter-spacing: 3px; }
+        .page-2 .bar { width: 200px; max-width: 80%; height: 4px; background: #333; border-radius: 2px; margin-top: 25px; overflow: hidden; }
+        .page-2 .bar-fill { width: 60%; height: 100%; background: #f7931e; border-radius: 2px; }
 
-            .toggle {
-                cursor: pointer;
-                padding: .5rem;
-            }
+        /* 3: Light Clean */
+        .page-3 { background: #f5f5f5; color: #333; }
+        .page-3 .icon { font-size: 45px; }
+        .page-3 h1 { font-size: 22px; font-weight: 600; }
 
-            .credits {
-                padding: .5rem;
-            }
-        }
+        /* 4: Green Fresh */
+        .page-4 { background: linear-gradient(180deg, #56ab2f 0%, #a8e063 100%); color: #fff; }
+        .page-4 h1 { font-size: 26px; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
 
-        .hidden {
-            display: none;
-        }
+        /* 5: Corporate Blue */
+        .page-5 { background: #fff; color: #333; }
+        .page-5 .box { border: 1px solid #ddd; padding: 40px 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .page-5 .icon { font-size: 35px; }
+        .page-5 h1 { font-size: 20px; color: #2c3e50; }
+        .page-5 .line { width: 50px; height: 3px; background: #3498db; margin: 20px auto 0; border-radius: 2px; }
+
+        /* 6: Warm Sunset */
+        .page-6 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: #fff; }
+        .page-6 .icon { font-size: 40px; }
+        .page-6 h1 { font-size: 26px; font-weight: 300; }
+
+        /* 7: Corporate Trash */
+        .page-7 { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: #fff; }
+        .page-7 h1 { font-size: 26px; font-family: "Arial", cursive; background: #ff6600; padding: 12px 24px; border-radius: 4px; }
+
+        /* 8: Sky Blue */
+        .page-8 { background: linear-gradient(180deg, #74b9ff 0%, #0984e3 100%); color: #fff; }
+        .page-8 .icon { font-size: 45px; }
+        .page-8 h1 { font-size: 24px; }
+
+        /* 9: Cream Paper */
+        .page-9 { background: #fdfbf7; color: #4a4a4a; }
+        .page-9 h1 { font-family: Georgia, serif; font-size: 24px; font-weight: 400; font-style: italic; }
+
+        /* 10: Teal Modern */
+        .page-10 { background: #00b894; color: #fff; }
+        .page-10 .icon { font-size: 40px; }
+        .page-10 h1 { font-size: 28px; font-weight: 700; }
     </style>
+</head>
+<body>
+    <div class="page page-1" id="page-1">
+        <div class="icon">&#128679;</div>
+        <h1>Temporarily Under Construction</h1>
+    </div>
 
-    <body>
-        <img src="persons/person_0.jpg" alt="An image of a person that does exist"/>
-        <div class="desc">
-            <div class="toggle">?</div>
-            <div class="credits hidden">
-            This person does exist. Maybe it is not a person.<br/>
-            These persons are scraped from the <a href="https://storage.googleapis.com/openimages/web/index.html">OpenImages</a> Dataset, detected using <a
-                    href="https://opencv.org/">OpenCV</a> object detection as part of the
-            project "[Harvesting] the Crops of Your Labor" by <a href="https://davidwahrenburg.de">David Wahrenburg</a>
-            </div>
+    <div class="page page-2" id="page-2">
+        <h1>Under Destruction</h1>
+        <div class="bar"><div class="bar-fill"></div></div>
+    </div>
+
+    <div class="page page-3" id="page-3">
+        <div class="icon">&#9881;</div>
+        <h1>Under Construction</h1>
+    </div>
+
+    <div class="page page-4" id="page-4">
+        <h1>Currently Under Construction</h1>
+    </div>
+
+    <div class="page page-5" id="page-5">
+        <div class="box">
+            <div class="icon">&#128736;</div>
+            <h1>Under Construction</h1>
+            <div class="line"></div>
         </div>
-    </body>
+    </div>
+
+    <div class="page page-6" id="page-6">
+        <div class="icon">&#10024;</div>
+        <h1>Temporarily Under Destruction</h1>
+    </div>
+
+    <div class="page page-7" id="page-7">
+        <h1>Under Destruction</h1>
+    </div>
+
+    <div class="page page-8" id="page-8">
+        <div class="icon">&#9729;</div>
+        <h1>Under Construction</h1>
+    </div>
+
+    <div class="page page-9" id="page-9">
+        <h1>Under Construction</h1>
+    </div>
+
+    <div class="page page-10" id="page-10">
+        <div class="icon">&#128640;</div>
+        <h1>Under Construction</h1>
+    </div>
 
     <script>
-        window.addEventListener('load', () => {
-            let img = document.querySelector('img');
+        (function() {
+            var palettes = [
+                { bg1: '#667eea', bg2: '#764ba2', text: '#fff', accent: '#ffd93d' },
+                { bg1: '#1a1a1a', bg2: '#2d2d2d', text: '#fff', accent: '#f7931e' },
+                { bg1: '#f5f5f5', bg2: '#e0e0e0', text: '#333', accent: '#3498db' },
+                { bg1: '#56ab2f', bg2: '#a8e063', text: '#fff', accent: '#fff' },
+                { bg1: '#f093fb', bg2: '#f5576c', text: '#fff', accent: '#ffd93d' },
+                { bg1: '#1e3c72', bg2: '#2a5298', text: '#fff', accent: '#ff6600' },
+                { bg1: '#74b9ff', bg2: '#0984e3', text: '#fff', accent: '#fff' },
+                { bg1: '#fdfbf7', bg2: '#f5f0e6', text: '#4a4a4a', accent: '#c9a96e' },
+                { bg1: '#00b894', bg2: '#00a388', text: '#fff', accent: '#ffeaa7' },
+                { bg1: '#e74c3c', bg2: '#c0392b', text: '#fff', accent: '#fff' },
+                { bg1: '#9b59b6', bg2: '#8e44ad', text: '#fff', accent: '#f1c40f' },
+                { bg1: '#34495e', bg2: '#2c3e50', text: '#fff', accent: '#1abc9c' },
+                { bg1: '#e67e22', bg2: '#d35400', text: '#fff', accent: '#fff' },
+                { bg1: '#1abc9c', bg2: '#16a085', text: '#fff', accent: '#fff' },
+                { bg1: '#fd79a8', bg2: '#e84393', text: '#fff', accent: '#ffeaa7' }
+            ];
 
-            let randomNum = Math.floor(Math.random() * 7506);
-            img.src = `persons/person_${randomNum}.jpg`;
-            img.style.display = 'block';
+            var n = Math.floor(Math.random() * 10) + 1;
+            var el = document.getElementById('page-' + n);
+            if (el) el.classList.add('active');
 
-            img.addEventListener('click', () => {
-                let randomNum = Math.floor(Math.random() * 7506);
-                img.src = `persons/person_${randomNum}.jpg`;
-            });
+            var p = palettes[Math.floor(Math.random() * palettes.length)];
+            var angle = Math.floor(Math.random() * 360);
 
-            let toggle = document.querySelector('.toggle');
-            let credits = document.querySelector('.credits');
+            el.style.background = 'linear-gradient(' + angle + 'deg, ' + p.bg1 + ' 0%, ' + p.bg2 + ' 100%)';
+            el.style.color = p.text;
 
-            toggle.addEventListener('click', () => {
-                console.log('clicked');
-                console.log(credits.style.display);
-                if (credits.classList.contains('hidden')) {
-                    credits.classList.remove('hidden');
-                    toggle.innerText = 'Close';
-                } else {
-                    credits.classList.add('hidden');
-                    toggle.innerText = '?';
-                }
-            });
-        });
+            var bar = el.querySelector('.bar-fill');
+            if (bar) bar.style.background = p.accent;
+
+            var line = el.querySelector('.line');
+            if (line) line.style.background = p.accent;
+
+            var box = el.querySelector('.box');
+            if (box) box.style.borderColor = p.accent;
+
+            var h1 = el.querySelector('h1');
+            if (n === 7 && h1) h1.style.background = p.accent;
+        })();
     </script>
+</body>
 </html>
